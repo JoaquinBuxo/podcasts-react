@@ -1,16 +1,20 @@
 export type Podcast = {
-  'im:name': string;
+  'im:name': Label;
   'im:image': Image[];
-  summary: string;
+  summary: Label;
   'im:price': Price;
   'im:contentType': ContentType;
-  rights: string;
-  title: string;
+  rights: Label;
+  title: Label;
   link: Link;
   id: Id;
   'im:artist': Artist;
   category: Category;
   'im:releaseDate': ReleaseDate;
+};
+
+type Label = {
+  label: string;
 };
 
 type Image = {
