@@ -1,10 +1,10 @@
-import { useLoaderData } from 'react-router-dom';
-import { PodcastDetailResult } from '../types/podcasts';
+import { PodcastDetail } from '../types/podcasts';
 
-const PodcastDetailCard = () => {
-  const {
-    results: [podcast],
-  } = useLoaderData() as PodcastDetailResult;
+type PodcastDetailProps = {
+  podcast: PodcastDetail;
+};
+
+const PodcastDetailCard: React.FC<PodcastDetailProps> = ({ podcast }) => {
   return (
     <div>
       <img src={podcast.artworkUrl100} alt={podcast.collectionName} />

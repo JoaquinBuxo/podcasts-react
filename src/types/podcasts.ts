@@ -49,7 +49,37 @@ export type PodcastDetail = {
 
 export type PodcastDetailResult = {
   resultCount: number;
-  results: PodcastDetail[];
+  results: [PodcastDetail, ...Episode[]];
+};
+
+export type Episode = {
+  artistIds: number[];
+  artistViewUrl: string;
+  artworkUrl60: string;
+  artworkUrl160: string;
+  artworkUrl600: string;
+  closedCaptioning: string;
+  collectionId: number;
+  collectionName: string;
+  collectionViewUrl: string;
+  contentAdvisoryRating: string;
+  country: string;
+  description: string;
+  episodeContentType: string;
+  episodeFileExtension: string;
+  episodeGuid: string;
+  episodeUrl: string;
+  feedUrl: string;
+  genres: { name: string; id: string }[];
+  kind: string;
+  previewUrl: string;
+  releaseDate: string;
+  shortDescription: string;
+  trackId: number;
+  trackName: string;
+  trackTimeMillis: number;
+  trackViewUrl: string;
+  wrapperType: string;
 };
 
 type Label = {

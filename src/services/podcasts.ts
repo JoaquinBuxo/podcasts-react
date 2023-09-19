@@ -23,6 +23,8 @@ export const podcastDetailsLoader = async ({
   params,
 }: LoaderFunctionArgs): Promise<PodcastDetailResult> => {
   const { podcastId } = params;
-  const res = await fetch(`https://itunes.apple.com/lookup?id=${podcastId}`);
+  const res = await fetch(
+    `https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=100`
+  );
   return res.json();
 };
