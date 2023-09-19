@@ -5,12 +5,13 @@ export const fetchPodcasts = async () => {
     );
 
     if (!response.ok) {
-      throw new Error(response.statusText);
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const data = await response.json();
     return data.feed.entry;
   } catch (error) {
     console.log(error);
+    throw new Error(`Error: ${error}`);
   }
 };

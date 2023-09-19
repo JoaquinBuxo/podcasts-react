@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Podcast } from '../types/podcasts';
 
 type PodcastCardProps = {
@@ -7,10 +8,10 @@ type PodcastCardProps = {
 
 const PodcastCard: React.FC<PodcastCardProps> = ({ podcast }) => {
   return (
-    <div>
+    <Link to={`/podcast/${podcast.id.attributes['im:id']}`}>
       <h2>{podcast.title.label}</h2>
       <p>Author: {podcast['im:artist'].label}</p>
-    </div>
+    </Link>
   );
 };
 
