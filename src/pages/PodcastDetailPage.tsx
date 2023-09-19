@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import PodcastDetailCard from '../components/PodcastDetailCard';
 import { PodcastDetailResult } from '../types/podcasts';
 import PodcastDetailEpisodes from '../components/PodcastDetailEpisodes';
@@ -17,7 +17,6 @@ const PodcastDetailPage = () => {
         episodes={episodes}
         numEpisodes={resultCount - 1}
       />
-      <Link to='episode'>Link to episode</Link>
     </div>
   );
 };

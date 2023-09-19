@@ -21,7 +21,7 @@ const router = createBrowserRouter(
         loader={podcastDetailsLoader}
       />
       <Route
-        path='podcast/:podcastId/episode'
+        path='podcast/:podcastId/episode/:episodeId'
         element={<EpisodeDetailPage />}
       />
     </Route>
