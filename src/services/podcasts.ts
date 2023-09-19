@@ -1,3 +1,6 @@
+import { LoaderFunctionArgs } from 'react-router-dom';
+import { PodcastDetailResult } from '../types/podcasts';
+
 export const fetchPodcasts = async () => {
   try {
     const response = await fetch(
@@ -14,4 +17,12 @@ export const fetchPodcasts = async () => {
     console.log(error);
     throw new Error(`Error: ${error}`);
   }
+};
+
+export const podcastDetailsLoader = async ({
+  params,
+}: LoaderFunctionArgs): Promise<PodcastDetailResult> => {
+  const { podcastId } = params;
+  const res = await fetch(`https://itunes.apple.com/lookup?id=${podcastId}`);
+  return res.json();
 };
