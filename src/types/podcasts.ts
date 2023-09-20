@@ -52,6 +52,10 @@ export type PodcastDetailResult = {
   results: [PodcastDetail, ...Episode[]];
 };
 
+export type PodcastQueryResult = {
+  data: Podcasts;
+};
+
 export type Episode = {
   artistIds: number[];
   artistViewUrl: string;
