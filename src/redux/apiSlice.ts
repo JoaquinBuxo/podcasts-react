@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Podcast } from '../types/podcasts';
+import {
+  Episode,
+  Podcast,
+  PodcastDetail,
+  PodcastDetailResult,
+} from '../types/podcasts';
 
 export const podcastsApi = createApi({
   reducerPath: 'podcastsApi',
@@ -10,7 +15,22 @@ export const podcastsApi = createApi({
       transformResponse: (response: { feed: { entry: Podcast[] } }) =>
         response.feed.entry,
     }),
+    getPodcastDetails: builder.query<
+      { podcast: PodcastDetail; episodes: Episode[] },
+      string | undefined
+    >({
+      query: (podcastId) =>
+        `/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=100`,
+      transformResponse: (
+        response: PodcastDetailResult
+      ): { podcast: PodcastDetail; episodes: Episode[] } => {
+        const { results } = response;
+        const [podcast, ...episodes] = results;
+        return { podcast, episodes };
+      },
+    }),
   }),
 });
 
-export const { useGetAllPodcastsQuery } = podcastsApi;
+export const { useGetAllPodcastsQuery, useGetPodcastDetailsQuery } =
+  podcastsApi;

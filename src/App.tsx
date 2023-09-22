@@ -7,10 +7,10 @@ import {
 } from 'react-router-dom';
 import RootLayout from './layouts/RootLayout';
 import PodcastsPage from './pages/PodcastsPage';
-import PodcastDetailPage from './pages/PodcastDetailPage';
 import EpisodeDetailPage from './pages/EpisodeDetailPage';
-import { podcastDetailsLoader } from './services/podcasts';
 import PodcastLayout from './layouts/PodcastLayout';
+import PodcastEpisodes from './components/PodcastEpisodes';
+import { podcastDetailsLoader } from './services/podcasts';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,11 +21,7 @@ const router = createBrowserRouter(
         element={<PodcastLayout />}
         loader={podcastDetailsLoader}
       >
-        <Route
-          path=':podcastId'
-          element={<PodcastDetailPage />}
-          loader={podcastDetailsLoader}
-        />
+        <Route path=':podcastId' element={<PodcastEpisodes />} />
         <Route
           path=':podcastId/episode/:episodeId'
           element={<EpisodeDetailPage />}

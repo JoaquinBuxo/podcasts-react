@@ -56,6 +56,10 @@ export type PodcastQueryResult = {
   data: Podcasts;
 };
 
+export type PodcastDetailsQueryResult = {
+  data: { podcast: PodcastDetail; episodes: Episode[] };
+};
+
 export type Episode = {
   artistIds: number[];
   artistViewUrl: string;
