@@ -1,16 +1,16 @@
 import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { setSearchQuery } from '../redux/podcastSlice';
 
-type SearchProps = {
-  setSearchQuery: (query: string) => void;
-};
+const Search = () => {
+  const dispatch = useDispatch();
 
-const Search: React.FC<SearchProps> = ({ setSearchQuery }) => {
   const handleSearch = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const query = event.target.value;
-      setSearchQuery(query);
+      dispatch(setSearchQuery(query));
     },
-    [setSearchQuery]
+    [dispatch]
   );
 
   return (

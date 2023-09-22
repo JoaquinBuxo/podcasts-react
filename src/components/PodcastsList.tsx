@@ -1,38 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Podcast, PodcastQueryResult } from '../types/podcasts';
 import PodcastCard from './PodcastCard';
-import Search from './Search';
 import { filterPodcasts } from '../utils/podcastUtils';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../redux/podcastSlice';
 
 import { useGetAllPodcastsQuery } from '../redux/apiSlice';
+import { RootState } from '../redux/store';
 
 const PodcastsList = () => {
   const { data: podcasts, isLoading } =
     useGetAllPodcastsQuery() as PodcastQueryResult;
 
-  const [filteredPodcasts, setFilteredPodcasts] = useState<Podcast[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>('');
-
   const dispatch = useDispatch();
+
+  const searchQuery = useSelector(
+    (state: RootState) => state.podcast.searchQuery
+  );
 
   useEffect(() => {
     dispatch(setLoading(isLoading));
   }, [isLoading, dispatch]);
 
-  useEffect(() => {
-    setFilteredPodcasts(podcasts);
-  }, [podcasts]);
+  const filteredPodcasts = useMemo(
+    () => filterPodcasts(podcasts, searchQuery),
+    [podcasts, searchQuery]
+  );
 
-  useEffect(() => {
-    setFilteredPodcasts(filterPodcasts(podcasts, searchQuery));
-  }, [podcasts, searchQuery]);
+  if (isLoading || !podcasts) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
       <h1>Podcasts</h1>
-      <Search setSearchQuery={setSearchQuery} />
       {filteredPodcasts?.map((podcast: Podcast) => (
         <PodcastCard key={podcast.id.attributes['im:id']} podcast={podcast} />
       ))}
