@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {};
 
-export const podcastsSlice = createSlice({
-  name: 'podcasts',
+export const podcastSlice = createSlice({
+  name: 'podcast',
   initialState,
   reducers: {},
 });
 
-export default podcastsSlice.reducer;
+export default podcastSlice.reducer;

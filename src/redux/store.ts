@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import podcastsReducer from './podcastsSlice';
+import podcastReducer from './podcastSlice';
 
 export const store = configureStore({
   reducer: {
-    podcasts: podcastsReducer,
+    podcast: podcastReducer,
   },
 });
 

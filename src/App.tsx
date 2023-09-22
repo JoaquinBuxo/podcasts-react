@@ -10,17 +10,12 @@ import PodcastsPage from './pages/PodcastsPage';
 import EpisodeDetailPage from './pages/EpisodeDetailPage';
 import PodcastLayout from './layouts/PodcastLayout';
 import PodcastEpisodes from './components/PodcastEpisodes';
-import { podcastDetailsLoader } from './services/podcasts';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<RootLayout />}>
       <Route index element={<PodcastsPage />} />
-      <Route
-        path='podcast'
-        element={<PodcastLayout />}
-        loader={podcastDetailsLoader}
-      >
+      <Route path='podcast' element={<PodcastLayout />}>
         <Route path=':podcastId' element={<PodcastEpisodes />} />
         <Route
           path=':podcastId/episode/:episodeId'

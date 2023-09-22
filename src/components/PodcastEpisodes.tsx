@@ -1,19 +1,17 @@
-import { Link, useParams } from 'react-router-dom';
-import { Episode, PodcastDetailsQueryResult } from '../types/podcasts';
-import { useGetPodcastDetailsQuery } from '../redux/apiSlice';
+import { Link } from 'react-router-dom';
+import { PodcastDetail, Episode } from '../types/podcasts';
+import { useOutletContext } from 'react-router-dom';
 
 const PodcastEpisodes = () => {
-  const { podcastId } = useParams();
-  const {
-    data: { episodes },
-  } = useGetPodcastDetailsQuery(podcastId) as PodcastDetailsQueryResult;
+  const [data]: [{ podcast: PodcastDetail; episodes: Episode[] }] =
+    useOutletContext();
 
   return (
     <div>
-      <h2>Episodes: {episodes.length}</h2>
-      {episodes.map((episode: Episode) => (
+      <h2>Episodes: {data.episodes.length}</h2>
+      {data.episodes.map((episode: Episode) => (
         <div key={episode.trackId}>
-          <Link to={`episode/${episode.trackId}`}>{episode.trackName}</Link> |{' '}
+          <Link to={`episode/${episode.trackId}`}>{episode.trackName}</Link>|{' '}
           {episode.releaseDate} |{episode.trackTimeMillis}
         </div>
       ))}
