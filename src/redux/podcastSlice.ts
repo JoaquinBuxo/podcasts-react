@@ -1,11 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
-
-export const podcastSlice = createSlice({
+const podcastSlice = createSlice({
   name: 'podcast',
-  initialState,
-  reducers: {},
+  initialState: {
+    isLoading: true,
+  },
+  reducers: {
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
+  },
 });
+
+export const { setLoading } = podcastSlice.actions;
 
 export default podcastSlice.reducer;

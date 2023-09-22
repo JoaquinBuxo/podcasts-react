@@ -16,8 +16,6 @@ const EpisodeDetailPage = () => {
     return <div>No episode found</div>;
   }
 
-  console.log(episode);
-
   return (
     <div>
       <h2>{episode.trackName}</h2>

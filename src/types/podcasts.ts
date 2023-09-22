@@ -54,6 +54,7 @@ export type PodcastDetailResult = {
 
 export type PodcastQueryResult = {
   data: Podcasts;
+  isLoading: boolean;
 };
 
 export type PodcastDetailsQueryResult = {

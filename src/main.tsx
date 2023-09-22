@@ -9,10 +9,10 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ReduxProvider store={store}>
-      <ReduxApiProvider api={podcastsApi}>
+    <ReduxApiProvider api={podcastsApi}>
+      <ReduxProvider store={store}>
         <App />
-      </ReduxApiProvider>
-    </ReduxProvider>
+      </ReduxProvider>
+    </ReduxApiProvider>
   </React.StrictMode>
 );
