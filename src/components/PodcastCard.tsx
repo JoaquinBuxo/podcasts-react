@@ -8,7 +8,10 @@ type PodcastCardProps = {
 
 const PodcastCard: React.FC<PodcastCardProps> = ({ podcast }) => {
   return (
-    <Link to={`/podcast/${podcast.id.attributes['im:id']}`}>
+    <Link
+      to={`/podcast/${podcast.id.attributes['im:id']}`}
+      state={{ summary: podcast.summary.label }}
+    >
       <h2>{podcast.title.label}</h2>
       <p>Author: {podcast['im:artist'].label}</p>
     </Link>

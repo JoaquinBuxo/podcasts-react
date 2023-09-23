@@ -14,7 +14,10 @@ export const podcastsApi = createApi({
       query: () => '/us/rss/toppodcasts/limit=10/genre=1310/json',
       transformResponse: (response: { feed: { entry: Podcast[] } }) =>
         response.feed.entry,
+      // Keep unused data for one day
+      keepUnusedDataFor: 60 * 60 * 24,
     }),
+
     getPodcastDetails: builder.query<
       { podcast: PodcastDetail; episodes: Episode[] },
       string | undefined
@@ -28,6 +31,8 @@ export const podcastsApi = createApi({
         const [podcast, ...episodes] = results;
         return { podcast, episodes };
       },
+      // Keep unused data for one day
+      keepUnusedDataFor: 60 * 60 * 24,
     }),
   }),
 });
