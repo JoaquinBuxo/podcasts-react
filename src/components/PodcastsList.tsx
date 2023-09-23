@@ -2,10 +2,11 @@ import { useEffect, useMemo } from 'react';
 import { Podcast, PodcastQueryResult } from '../types/podcasts';
 import PodcastCard from './PodcastCard';
 import { filterPodcasts } from '../utils/podcastUtils';
-import { useDispatch, useSelector } from 'react-redux';
-import { setLoading } from '../redux/podcastSlice';
 
+import { setLoading } from '../redux/podcastSlice';
 import { useGetAllPodcastsQuery } from '../redux/apiSlice';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 
 const PodcastsList = () => {

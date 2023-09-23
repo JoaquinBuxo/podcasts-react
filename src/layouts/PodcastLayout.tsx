@@ -1,10 +1,9 @@
-import { Outlet } from 'react-router-dom';
-import PodcastDetailCard from '../components/PodcastDetailCard';
-import { useParams } from 'react-router-dom';
-import { useGetPodcastDetailsQuery } from '../redux/apiSlice';
-import { useDispatch } from 'react-redux';
-import { setLoading } from '../redux/podcastSlice';
 import { useEffect } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useGetPodcastDetailsQuery } from '../redux/apiSlice';
+import { setLoading } from '../redux/podcastSlice';
+import PodcastDetailCard from '../components/PodcastDetailCard';
 
 const PodcastLayout = () => {
   const { podcastId } = useParams();

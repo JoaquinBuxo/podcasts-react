@@ -3,10 +3,10 @@ import Search from '../components/Search';
 
 const PodcastsPage = () => {
   return (
-    <div>
+    <>
       <Search />
       <PodcastsList />
-    </div>
+    </>
   );
 };
 

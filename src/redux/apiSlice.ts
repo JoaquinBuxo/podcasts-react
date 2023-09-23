@@ -17,7 +17,6 @@ export const podcastsApi = createApi({
       // Keep unused data for one day
       keepUnusedDataFor: 60 * 60 * 24,
     }),
-
     getPodcastDetails: builder.query<
       { podcast: PodcastDetail; episodes: Episode[] },
       string | undefined
