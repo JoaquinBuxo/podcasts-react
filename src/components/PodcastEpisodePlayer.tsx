@@ -8,7 +8,7 @@ const PodcastEpisodePlayer: React.FC<PodcastEpisodePlayerProps> = ({
   audioUrl,
 }) => {
   return (
-    <audio controls>
+    <audio controls style={{ width: '100%' }}>
       <source src={audioUrl} type='audio/mpeg' />
       Your browser does not support the audio element.
     </audio>

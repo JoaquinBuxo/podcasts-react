@@ -1,6 +1,7 @@
 import { useOutletContext, useParams } from 'react-router-dom';
 import { PodcastDetail, Episode } from '../types/podcasts';
 import PodcastEpisodePlayer from '../components/PodcastEpisodePlayer';
+import { Card, CardContent, Divider, Typography } from '@mui/material';
 
 const EpisodeCard = () => {
   const [data]: [{ podcast: PodcastDetail; episodes: Episode[] }] =
@@ -17,11 +18,25 @@ const EpisodeCard = () => {
   }
 
   return (
-    <div>
-      <h2>{episode.trackName}</h2>
-      <p dangerouslySetInnerHTML={{ __html: episode.description }} />
-      <PodcastEpisodePlayer audioUrl={episode.previewUrl} />
-    </div>
+    <Card sx={{ my: 4, p: 2 }}>
+      <CardContent>
+        <Typography
+          variant='h4'
+          component='div'
+          fontWeight='bold'
+          sx={{ mb: 3 }}
+        >
+          {episode.trackName}
+        </Typography>
+        <Typography
+          variant='body1'
+          sx={{ mb: 4 }}
+          dangerouslySetInnerHTML={{ __html: episode.description }}
+        />
+        <Divider sx={{ mb: 3 }} />
+        <PodcastEpisodePlayer audioUrl={episode.previewUrl} />
+      </CardContent>
+    </Card>
   );
 };
 
