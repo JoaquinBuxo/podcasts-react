@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useGetPodcastDetailsQuery } from '../redux/apiSlice';
 import { setLoading } from '../redux/podcastSlice';
 import PodcastDetailCard from '../components/PodcastDetailCard';
+import { Grid } from '@mui/material';
 
 const PodcastLayout = () => {
   const { podcastId } = useParams();
@@ -20,12 +21,14 @@ const PodcastLayout = () => {
   }
 
   return (
-    <div className='podcast-layout'>
-      <>
+    <Grid container padding={4} columnSpacing={{ xs: 2, sm: 4, md: 6 }}>
+      <Grid item xs={12} md={4}>
         <PodcastDetailCard podcast={data.podcast} />
+      </Grid>
+      <Grid item xs={12} md={8}>
         <Outlet context={[data]} />
-      </>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 
