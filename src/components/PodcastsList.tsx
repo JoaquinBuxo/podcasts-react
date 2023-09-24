@@ -8,6 +8,7 @@ import { useGetAllPodcastsQuery } from '../redux/apiSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
+import { Typography, Grid, Chip } from '@mui/material';
 
 const PodcastsList = () => {
   const { data: podcasts, isLoading } =
@@ -34,10 +35,24 @@ const PodcastsList = () => {
 
   return (
     <>
-      <h1>Podcasts</h1>
-      {filteredPodcasts?.map((podcast: Podcast) => (
-        <PodcastCard key={podcast.id.attributes['im:id']} podcast={podcast} />
-      ))}
+      <Typography variant='h4' color='textPrimary' sx={{ mb: '2rem' }}>
+        Podcasts <Chip label={filteredPodcasts.length} color='primary' />
+      </Typography>
+
+      <Grid container spacing={2} overflow='auto' height={'70vh'}>
+        {filteredPodcasts.map((podcast: Podcast) => (
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            key={podcast.id.attributes['im:id']}
+            sx={{ position: 'relative' }}
+          >
+            <PodcastCard podcast={podcast} />
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 };

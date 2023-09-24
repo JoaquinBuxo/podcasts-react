@@ -11,7 +11,7 @@ export const podcastsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'https://itunes.apple.com' }),
   endpoints: (builder) => ({
     getAllPodcasts: builder.query<Podcast[], void>({
-      query: () => '/us/rss/toppodcasts/limit=10/genre=1310/json',
+      query: () => '/us/rss/toppodcasts/limit=100/genre=1310/json',
       transformResponse: (response: { feed: { entry: Podcast[] } }) =>
         response.feed.entry,
       // Keep unused data for one day
@@ -22,7 +22,7 @@ export const podcastsApi = createApi({
       string | undefined
     >({
       query: (podcastId) =>
-        `/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=100`,
+        `/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode&limit=20`,
       transformResponse: (
         response: PodcastDetailResult
       ): { podcast: PodcastDetail; episodes: Episode[] } => {
