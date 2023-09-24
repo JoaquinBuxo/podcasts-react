@@ -9,14 +9,11 @@ type PodcastCardProps = {
 
 const PodcastCard: React.FC<PodcastCardProps> = ({ podcast }) => (
   <Box sx={{ position: 'relative' }}>
-    <Link
-      to={`/podcast/${podcast.id.attributes['im:id']}`}
-      state={{ summary: podcast.summary.label }}
-    >
+    <Link to={`/podcast/${podcast.id.attributes['im:id']}`}>
       <CardMedia
         component='img'
         image={podcast['im:image'][2].label}
-        alt={podcast.title.label}
+        alt={podcast['im:name'].label}
         sx={{
           borderRadius: '50%',
           position: 'absolute',
