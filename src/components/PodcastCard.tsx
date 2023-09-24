@@ -17,10 +17,10 @@ const PodcastCard: React.FC<PodcastCardProps> = ({ podcast }) => (
         sx={{
           borderRadius: '50%',
           position: 'absolute',
-          width: '60%',
+          width: { xs: '30%', sm: '45%', md: '60%' },
           textAlign: 'center',
-          ml: '20%',
-          mt: '-25%',
+          ml: { xs: '35%', sm: '30%', md: '20%' },
+          mt: { xs: '-15%', sm: '-20%', md: '-25%' },
         }}
       />
       <Card sx={{ my: 2, textAlign: 'center', pt: '90px', mt: '90px' }}>

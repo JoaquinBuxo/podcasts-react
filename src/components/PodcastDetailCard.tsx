@@ -16,7 +16,7 @@ type PodcastDetailProps = {
 const PodcastDetailCard: React.FC<PodcastDetailProps> = ({ podcast }) => {
   const { podcastId } = useParams();
 
-  // I need to get this data to get the description of the podcast
+  // Get all this data to get the description of the podcast
   const { data: allPodcasts } = useGetAllPodcastsQuery();
   const podcastDetails = allPodcasts?.find(
     (podcast) => podcast.id.attributes['im:id'] === podcastId
